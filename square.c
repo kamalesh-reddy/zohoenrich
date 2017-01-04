@@ -1,0 +1,62 @@
+#include<stdio.h>
+int main()
+{
+ int a[10][10],i=2,row,col,n,nrow,ncol,tot;
+ scanf("%d",&n);
+ for(row=0;row<n;row++)
+  {
+   for(col=0;col<n;col++)
+    {
+      a[row][col]=0;    
+    }
+  }
+  row=0;
+  col=n/2;
+  a[row][col]=1;
+  tot=n*n;
+ while(i<=tot)
+ {
+   if((row-1)<0)
+    {
+     nrow=n-1;
+    }
+    else
+    {
+     nrow=row-1;
+    }
+   if((col+1)>n-1)
+    {
+     ncol=0;
+    }
+   else
+    {
+     ncol=col+1;
+    }
+   if(a[nrow][ncol]!=0)
+    {       
+     if(row>(n-1))
+      {           
+       nrow=0;                               
+      }                                                                     
+     else
+     {                                                                
+      nrow=row+1;                        
+      ncol=col;                        
+     }                                                                     
+    }
+   row=nrow;
+   col=ncol;
+   a[row][col]=i;
+   i++;
+ }
+ for(row=0;row<n;row++)
+  {
+   for(col=0;col<n;col++)
+    {
+     printf(" %d  ",a[row][col]);
+    }
+   printf("\n");
+  }
+ return 0;
+}  
+  
